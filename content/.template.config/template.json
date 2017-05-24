@@ -2,7 +2,7 @@
   "author": "Bastian Eicher",
   "classifications": [ "AXOOM", "Service", "Docker" ],
   "name": "AXOOM Service (.NET Core, Docker)",
-  "identity": "Axoom.Service",
+  "identity": "Axoom.Templates.Service",
   "shortName": "axoom-service",
   "tags": {
     "language": "C#"

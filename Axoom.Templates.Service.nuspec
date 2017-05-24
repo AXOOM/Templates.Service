@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
     <metadata>
-        <id>axoom-service</id>
+        <id>Axoom.Templates.Service</id>
         <title>AXOOM Service Template</title>
         <version>0.1</version>
         <description>A dotnet-new template for AXOOM Services using .NET Core and Docker.</description>
