@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Nito.AsyncEx;
 using Polly;
 
-namespace MySolutionName
+namespace Axoom.MySolutionName
 {
     public class Program
     {
