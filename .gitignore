@@ -1,7 +1,10 @@
-/content/src/.idea/
+/content/src/**/obj/
+/content/src/**/bin/
+
 /content/src/.vs/
-/content/src/_ReSharper.Caches/
-/content/**/bin/
-/content/**/obj/
-/content/**/*.user
-*.nupkg
+/content/src/.idea/
+/content/src/_ReSharper.*/
+/content/src/**/*.user
+.vscode/
+
+/*.nupkg
