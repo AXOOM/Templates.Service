@@ -3,13 +3,13 @@ version: '2'
 # Overrides used by Visual Studio for debugging "Debug" builds.
 
 services:
-  mysolutionname:
-    image: mysolutionname:dev
+  axoom.myservice:
+    image: my_image:dev
     build:
       args:
         source: ${DOCKER_BUILD_SOURCE}
     volumes:
-      - ./MySolutionName:/app
+      - ./Axoom.MyService:/app
       - ~/.nuget/packages:/root/.nuget/packages:ro
       - ~/clrdbg:/clrdbg:ro
     entrypoint: tail -f /dev/null

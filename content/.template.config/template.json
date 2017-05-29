@@ -2,16 +2,24 @@
   "author": "Bastian Eicher",
   "classifications": [ "AXOOM", "Service", "Docker" ],
   "name": "AXOOM Service (.NET Core, Docker)",
-  "identity": "Axoom.Templates.Service",
   "shortName": "axoom-service",
+  "identity": "Axoom.Templates.Service",
+  "groupIdentity": "Axoom.Templates.Service",
   "tags": {
     "language": "C#"
   },
-  "sourceName": "Axoom.MySolutionName",
+  "sourceName": "Axoom.MyService",
   "preferNameDirectory": "true",
   "guids": [
     "837BC53E-0271-4E9C-B5B5-C60EA7A7C7B5",
     "113F2D04-69F0-40C3-8797-BA3F356DD812",
     "B74301C8-0759-45FE-BA6C-E832BABE08E5"
   ],
+  "symbols": {
+    "imageName": {
+      "type": "parameter",
+      "isRequired": false,
+      "replaces":"my_image"
+    }
+  }
 }
