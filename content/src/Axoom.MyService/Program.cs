@@ -23,26 +23,26 @@ namespace Axoom.MyService
         }
 
         /// <summary>
-        /// Blocks until SIGTERM or SIGINT and then performs graceful shutdown.
+        /// Blocks until SIGTERM or SIGINT is raised and then calls the <paramref name="shutdown"/> callback.
         /// </summary>
         private static void WaitUntilExit(Action shutdown)
         {
-            var cancellationTokenSource = new CancellationTokenSource();
+            var wait = new ManualResetEventSlim(initialState: false);
 
             AssemblyLoadContext.GetLoadContext(typeof(Program).GetTypeInfo().Assembly).Unloading += context =>
             {
                 shutdown();
-                cancellationTokenSource.Cancel();
+                wait.Set();
             };
             Console.CancelKeyPress += (sender, eventArgs) =>
             {
                 shutdown();
-                cancellationTokenSource.Cancel();
+                wait.Set();
                 eventArgs.Cancel = true;
             };
 
             Console.WriteLine("Application started. Press Ctrl+C to shut down.");
-            cancellationTokenSource.Token.WaitHandle.WaitOne();
+            wait.Wait();
         }
     }
 }
