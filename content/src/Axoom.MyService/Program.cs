@@ -1,76 +1,48 @@
 ﻿using System;
-using System.Net.Sockets;
+using System.Reflection;
+using System.Runtime.Loader;
 using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Nito.AsyncEx;
-using Polly;
 
 namespace Axoom.MyService
 {
-    public class Program
+    public static class Program
     {
-        public static void Main() => AsyncContext.Run(MainAsync);
-
-        private static async Task MainAsync()
+        public static void Main()
         {
-            var provider = BuildServiceProvider();
+            var startup = new Startup();
 
-            var startupLogger = provider.GetService<ILogger<Program>>();
-            var policy = Policy
-                .Handle<SocketException>()
-                .WaitAndRetryAsync(
-                    sleepDurations: new[] {TimeSpan.FromSeconds(5), TimeSpan.FromSeconds(10)},
-                    onRetry: (ex, timeSpan) => startupLogger.LogWarning(0, ex, "Problem connecting to external service. Retrying in {0}.", timeSpan));
+            var serviceCollection = new ServiceCollection();
+            startup.ConfigureServices(serviceCollection);
 
-            await policy.ExecuteAsync(async () =>
-            {
-                // TODO: Implement service functionality
-                await WaitUntilCancelAsync();
-            });
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            startup.Configure(serviceProvider.GetService<ILoggerFactory>(), serviceProvider);
+
+            WaitUntilExit(shutdown: () => (serviceProvider as IDisposable)?.Dispose());
         }
 
-        private static IServiceProvider BuildServiceProvider()
-        {
-            var config = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json")
-                .AddEnvironmentVariables()
-                .Build();
-
-            var provider = new ServiceCollection()
-                .AddLogging()
-                .AddOptions()
-                //.Configure<MyOptions>(config.GetSection("MyOptions"))
-                .BuildServiceProvider();
-
-            provider.GetService<ILoggerFactory>()
-                .AddConsole(config.GetSection("Logging"));
-
-            return provider;
-        }
-
-        private static async Task WaitUntilCancelAsync()
+        /// <summary>
+        /// Blocks until SIGTERM or SIGINT and then performs graceful shutdown.
+        /// </summary>
+        private static void WaitUntilExit(Action shutdown)
         {
             var cancellationTokenSource = new CancellationTokenSource();
-            Console.CancelKeyPress += (sender, e) =>
+
+            AssemblyLoadContext.GetLoadContext(typeof(Program).GetTypeInfo().Assembly).Unloading += context =>
             {
+                shutdown();
                 cancellationTokenSource.Cancel();
-                e.Cancel = true;
+            };
+            Console.CancelKeyPress += (sender, eventArgs) =>
+            {
+                shutdown();
+                cancellationTokenSource.Cancel();
+                eventArgs.Cancel = true;
             };
 
-            while (true)
-            {
-                try
-                {
-                    await Task.Delay(TimeSpan.FromSeconds(10), cancellationTokenSource.Token);
-                }
-                catch (OperationCanceledException)
-                {
-                    break;
-                }
-            }
+            Console.WriteLine("Application started. Press Ctrl+C to shut down.");
+            cancellationTokenSource.Token.WaitHandle.WaitOne();
         }
     }
 }
