@@ -1,5 +1,6 @@
 /content/src/**/obj/
 /content/src/**/bin/
+/content/artifacts/
 
 /content/src/.vs/
 /content/src/.idea/
@@ -7,4 +8,4 @@
 /content/src/**/*.user
 .vscode/
 
-/*.nupkg
+/artifacts/
