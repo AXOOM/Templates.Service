@@ -8,16 +8,10 @@ using Startup.Core;
 
 namespace Axoom.MyService
 {
-    /// <summary>
-    /// Startup class.
-    /// </summary>
     public class Startup : IStartup
     {
         public IConfigurationRoot Configuration { get; }
 
-        /// <summary>
-        /// Called to set up an environment.
-        /// </summary>
         public Startup()
         {
             Configuration = new ConfigurationBuilder()
@@ -26,25 +20,21 @@ namespace Axoom.MyService
                 .Build();
         }
 
-        /// <summary>
-        /// Called to register services.
-        /// </summary>
         public void ConfigureServices(IServiceCollection services)
         {
             services
                 .AddLogging()
                 .AddOptions()
                 //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
-                //.AddSingleton<IMyRemoteService, MyRemoteService>()
+                //.AddTransient<IMyService, MyService>()
+                //.AddSingleton<Worker>()
                 ;
         }
 
-        /// <summary>
-        /// Called to configure services after they have been registered.
-        /// </summary>
         public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
         {
             loggerFactory.AddAxoomLogging("Axoom.MyService");
+            //provider.GetService<Worker>();
         }
     }
 }
