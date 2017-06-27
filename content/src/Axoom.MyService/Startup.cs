@@ -4,13 +4,14 @@ using Axoom.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Startup.Core;
 
 namespace Axoom.MyService
 {
     /// <summary>
     /// Startup class.
     /// </summary>
-    public class Startup
+    public class Startup : IStartup
     {
         public IConfigurationRoot Configuration { get; }
 

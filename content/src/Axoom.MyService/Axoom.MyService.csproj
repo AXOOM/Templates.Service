@@ -25,10 +25,10 @@
     <PackageReference Include="Axoom.Extensions.Configuration.Yaml" Version="1.1.0" />
     <PackageReference Include="Axoom.Extensions.Logging" Version="1.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.2" />
     <PackageReference Include="JetBrains.Annotations" Version="10.4.0" />
+    <PackageReference Include="Startup.Core" Version="0.1.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
   </ItemGroup>
 
