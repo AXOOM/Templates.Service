@@ -15,7 +15,7 @@ namespace Axoom.MyService
         public Startup()
         {
             Configuration = new ConfigurationBuilder()
-                .AddYamlFile("appsettings.yml", optional: true, reloadOnChange: true)
+                .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables()
                 .Build();
         }
