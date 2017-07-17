@@ -33,7 +33,7 @@ namespace Axoom.MyService
 
         public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
         {
-            loggerFactory.AddAxoomLogging("Axoom.MyService");
+            loggerFactory.AddAxoomLogging(Configuration["Logging"]);
 
             //var logger = loggerFactory.CreateLogger<Startup>();
             //var policy = Policy
