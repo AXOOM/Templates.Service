@@ -37,18 +37,10 @@ namespace Axoom.MyService
             var logger = loggerFactory.CreateLogger<Startup>();
             logger.LogInformation("Starting My Service");
 
-            //Policy
-            //    .Handle<SocketException>()
-            //    .Or<HttpRequestException>()
-            //    .WaitAndRetryAsync(
-            //        sleepDurations: new[] {TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20)},
-            //        onRetry: (ex, timeSpan) => logger.LogWarning(0, ex,
-            //            "Problem connecting to external service. Retrying in {0}.", timeSpan))
-            //    .ExecuteAsync(async () =>
-            //    {
-            //        await provider.GetService<Worker>().StartAsync();
-            //    })
-            //    .Wait();
+            //Policies.StartupAsync(logger, async () =>
+            //{
+            //    await provider.GetService<Worker>().StartAsync();
+            //}).Wait();
         }
     }
 }
