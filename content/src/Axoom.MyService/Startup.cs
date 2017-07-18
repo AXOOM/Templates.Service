@@ -25,6 +25,7 @@ namespace Axoom.MyService
             services
                 .AddLogging()
                 .AddOptions()
+                .AddPolicies(Configuration.GetSection("Policies"))
                 //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
                 //.AddTransient<IMyService, MyService>()
                 //.AddSingleton<Worker>()
@@ -37,7 +38,7 @@ namespace Axoom.MyService
             var logger = loggerFactory.CreateLogger<Startup>();
             logger.LogInformation("Starting My Service");
 
-            //Policies.StartupAsync(logger, async () =>
+            //provider.GetService<IPolicies>().StartupAsync(async () =>
             //{
             //    await provider.GetService<Worker>().StartAsync();
             //}).Wait();
