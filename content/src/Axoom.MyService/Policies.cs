@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading.Tasks;
+using Axoom.Extensions.Logging.Extensions;
 using Microsoft.Extensions.Logging;
 using Polly;
 
@@ -20,7 +21,7 @@ namespace Axoom.MyService
             .Or<HttpRequestException>()
             .WaitAndRetryAsync(
                 sleepDurations: new[] {TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20)},
-                onRetry: (ex, timeSpan) => logger.LogWarning(0, ex, "Problem connecting to external service. Retrying in {0}.", timeSpan))
+                onRetry: (ex, timeSpan) => logger.LogWarning(ex, $"Problem connecting to external service. Retrying in {timeSpan}."))
             .ExecuteAsync(action);
     }
 }
