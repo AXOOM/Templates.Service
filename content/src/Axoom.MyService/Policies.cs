@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using Axoom.Extensions.Logging.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Polly;
 
 namespace Axoom.MyService
@@ -35,9 +38,7 @@ namespace Axoom.MyService
 
         /// <inheritdoc />
         public Task StartupAsync(Func<Task> action) => Policy
-            .Handle<BrokerUnreachableException>()
-            .Or<SocketException>()
-            .Or<HttpRequestException>()
+            .Handle<HttpRequestException>()
             .WaitAndRetryAsync(
                 sleepDurations: _options.Value.StartupRetries,
                 onRetry: (ex, timeSpan) => _logger.LogWarning(ex, $"Problem connecting to external service. Retrying in {timeSpan}."))
