@@ -12,4 +12,4 @@ For local testing:
 
     cd src
     ./build-dotnet.ps1
-    docker-compose up -d
+    docker-compose up -d --build
