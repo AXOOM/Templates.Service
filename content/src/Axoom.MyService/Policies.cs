@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Axoom.Extensions.Logging.Extensions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -41,7 +40,7 @@ namespace Axoom.MyService
             .Handle<HttpRequestException>()
             .WaitAndRetryAsync(
                 sleepDurations: _options.Value.StartupRetries,
-                onRetry: (ex, timeSpan) => _logger.LogWarning(ex, $"Problem connecting to external service. Retrying in {timeSpan}."))
+                onRetry: (ex, timeSpan) => _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}. ({ex.GetType().Name}: {ex.Message})"))
             .ExecuteAsync(action);
     }
 
@@ -53,7 +52,7 @@ namespace Axoom.MyService
         /// <summary>
         /// The delays between subsequent retry attemps at startup.
         /// </summary>
-        public IEnumerable<TimeSpan> StartupRetries { get; set; } = new[] { TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(20) };
+        public ICollection<TimeSpan> StartupRetries { get; } = new List<TimeSpan>();
     }
 
     public static class PolicyExtensions
