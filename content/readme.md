@@ -10,4 +10,4 @@ For local testing:
 
     cd src
     ./build.ps1
-    docker-compose up --build
+    docker-compose up
