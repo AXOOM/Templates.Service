@@ -35,7 +35,7 @@ namespace Axoom.MyService
         public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
         {
             loggerFactory
-                .AddAxoomLogging(Configuration.GetSection("Logging"))
+                .UseAxoomLogging(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
 
