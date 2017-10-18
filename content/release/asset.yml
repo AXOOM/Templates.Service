@@ -9,4 +9,4 @@ mixins:
       IMAGE: <DOCKER_REGISTRY>/services/myservice:<VERSION>
 
 compose:
-  - version: 3.2
+  - version: '3.2'
