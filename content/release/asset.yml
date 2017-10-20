@@ -7,7 +7,8 @@ mixins:
   - feed_uri: http://assets.axoom.cloud/mixins/axoom-service.xml
     parameters:
       SERVICE_NAME: myservice
-      IMAGE: <DOCKER_REGISTRY>/services/myservice:<VERSION>
+      DOCKER_REGISTRY: <DOCKER_REGISTRY>
+      VERSION: <VERSION>
 
 compose:
   - version: '3.2'
