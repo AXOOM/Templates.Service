@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
@@ -10,7 +9,6 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
-
   <PropertyGroup>
     <Description>My Service</Description>
     <Authors>AXOOM GmbH</Authors>
@@ -20,22 +18,20 @@
     <RepositoryUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Axoom.MyService</RepositoryUrl>
     <PackageProjectUrl>https://tfs.inside-axoom.org/tfs/axoom/axoom/_git/Axoom.MyService?_a=readme&amp;fullScreen=true</PackageProjectUrl>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Axoom.Extensions.Configuration.Yaml" Version="1.2.2" />
-    <PackageReference Include="Axoom.Extensions.Logging" Version="3.6.0" />
+    <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.0.0-alpha0003" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.0.0" />
     <PackageReference Include="JetBrains.Annotations" Version="11.1.0" />
     <PackageReference Include="Polly" Version="5.5.0" />
     <PackageReference Include="Startup.Core" Version="0.1.0" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="appsettings.yml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

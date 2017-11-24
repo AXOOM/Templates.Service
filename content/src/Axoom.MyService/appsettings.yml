@@ -1,11 +1,8 @@
 Logging:
-  ApplicationName: myservice
-  LogTargets:
-    0:
-      Type: Console
-      Async: true
-      Format: Plain
-      Level: Debug
+  LogLevel:
+    Default: Debug
+  Format: Plain
+  Async: false
 
 Policies:
   StartupRetries:

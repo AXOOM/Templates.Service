@@ -1,6 +1,7 @@
 ﻿using System;
 using Axoom.Extensions.Configuration.Yaml;
 using Axoom.Extensions.Logging;
+using Axoom.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,7 +24,7 @@ namespace Axoom.MyService
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddLogging()
+                .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
                 .AddOptions()
                 .AddPolicies(Configuration.GetSection("Policies"))
                 //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
@@ -35,7 +36,7 @@ namespace Axoom.MyService
         public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
         {
             loggerFactory
-                .UseAxoomLogging(Configuration.GetSection("Logging"))
+                .AddAxoomConsole(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
 
