@@ -39,9 +39,9 @@ namespace Axoom.MyService
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
 
-            //provider.GetService<IPolicies>().StartupAsync(async () =>
+            //provider.GetRequiredService<IPolicies>().StartupAsync(async () =>
             //{
-            //    await provider.GetService<Worker>().StartAsync();
+            //    await provider.GetRequiredService<Worker>().StartAsync();
             //}).Wait();
         }
     }
