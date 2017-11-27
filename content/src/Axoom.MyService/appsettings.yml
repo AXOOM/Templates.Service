@@ -2,7 +2,6 @@ Logging:
   LogLevel:
     Default: Debug
   Format: Plain
-  Async: false
 
 Policies:
   StartupRetries:
