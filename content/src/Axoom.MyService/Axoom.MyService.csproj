@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Axoom.Extensions.Configuration.Yaml" Version="1.2.2" />
-    <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.0.0-alpha0003" />
+    <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.0.0-alpha0011" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.0.0" />
