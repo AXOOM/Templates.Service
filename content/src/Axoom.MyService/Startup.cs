@@ -20,17 +20,14 @@ namespace Axoom.MyService
                 .Build();
         }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services
-                .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
-                .AddOptions()
-                .AddPolicies(Configuration.GetSection("Policies"))
-                //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
-                //.AddTransient<IMyService, MyService>()
-                //.AddSingleton<Worker>()
-                ;
-        }
+        public void ConfigureServices(IServiceCollection services) => services
+            .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
+            .AddOptions()
+            .AddPolicies(Configuration.GetSection("Policies"))
+            //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
+            //.AddTransient<IMyService, MyService>()
+            //.AddSingleton<Worker>()
+            ;
 
         public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
         {
