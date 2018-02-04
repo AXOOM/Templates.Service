@@ -9,6 +9,10 @@ mixins:
       SERVICE_NAME: myservice
       DOCKER_REGISTRY: <DOCKER_REGISTRY>
       VERSION: <VERSION>
+  - feed_uri: http://assets.axoom.cloud/mixins/expose-metrics.xml
+    parameters:
+      SERVICE_NAME: myservice
+      PORT: 5000
 
 compose:
   - version: '3.3'

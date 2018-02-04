@@ -4,6 +4,8 @@ using Axoom.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Nexogen.Libraries.Metrics.Prometheus;
+using Nexogen.Libraries.Metrics.Prometheus.Standalone;
 using Startup.Core;
 
 namespace Axoom.MyService
@@ -22,6 +24,7 @@ namespace Axoom.MyService
 
         public void ConfigureServices(IServiceCollection services) => services
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
+            .AddSingleton<PrometheusMetrics>()
             .AddOptions()
             .AddPolicies(Configuration.GetSection("Policies"))
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
@@ -35,6 +38,8 @@ namespace Axoom.MyService
                 .AddAxoomConsole(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
+
+            provider.GetRequiredService<PrometheusMetrics>().Server().Port(5000).Start();
 
             //provider.GetRequiredService<IPolicies>().StartupAsync(async () =>
             //{
