@@ -4,8 +4,6 @@ using Axoom.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Nexogen.Libraries.Metrics.Prometheus;
-using Nexogen.Libraries.Metrics.Prometheus.Standalone;
 using Startup.Core;
 
 namespace Axoom.MyService
@@ -14,19 +12,16 @@ namespace Axoom.MyService
     {
         public IConfigurationRoot Configuration { get; }
 
-        public Startup()
-        {
-            Configuration = new ConfigurationBuilder()
-                .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .Build();
-        }
+        public Startup() => Configuration = new ConfigurationBuilder()
+            .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables()
+            .Build();
 
         public void ConfigureServices(IServiceCollection services) => services
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
-            .AddSingleton<PrometheusMetrics>()
             .AddOptions()
             .AddPolicies(Configuration.GetSection("Policies"))
+            .AddMetrics()
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
             //.AddTransient<IMyService, MyService>()
             //.AddSingleton<Worker>()
@@ -39,12 +34,12 @@ namespace Axoom.MyService
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
 
-            provider.GetRequiredService<PrometheusMetrics>().Server().Port(5000).Start();
-
             //provider.GetRequiredService<IPolicies>().StartupAsync(async () =>
             //{
             //    await provider.GetRequiredService<Worker>().StartAsync();
             //}).Wait();
+
+            provider.ExposeMetrics(port: 5000);
         }
     }
 }
