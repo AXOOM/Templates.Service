@@ -17,7 +17,7 @@ namespace Axoom.MyService
             .AddEnvironmentVariables()
             .Build();
 
-        public void ConfigureServices(IServiceCollection services) => services
+        public IServiceProvider ConfigureServices(IServiceCollection services) => services
             .AddLogging(builder => builder.AddConfiguration(Configuration.GetSection("Logging")))
             .AddOptions()
             .AddPolicies(Configuration.GetSection("Policies"))
@@ -25,11 +25,12 @@ namespace Axoom.MyService
             //.Configure<MyOptions>(Configuration.GetSection("MyOptions"))
             //.AddTransient<IMyService, MyService>()
             //.AddSingleton<Worker>()
-            ;
+            .BuildServiceProvider();
 
-        public void Configure(ILoggerFactory loggerFactory, IServiceProvider provider)
+        public void Configure(IServiceProvider provider)
         {
-            loggerFactory
+            provider
+                .GetRequiredService<ILoggerFactory>()
                 .AddAxoomConsole(Configuration.GetSection("Logging"))
                 .CreateLogger<Startup>()
                 .LogInformation("Starting My Service");
