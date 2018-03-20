@@ -2,7 +2,6 @@
 
 This repository contains the source code for My Service.
 
-
 ## Development
 
 Run `build.ps1` to compile the source code and package the result in Docker images.
