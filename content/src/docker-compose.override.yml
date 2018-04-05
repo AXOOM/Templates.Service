@@ -4,3 +4,5 @@ version: '3'
 services:
   myservice:
     image: myservice
+    ports:
+      - "5000:5000"
