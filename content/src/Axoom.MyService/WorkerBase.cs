@@ -20,8 +20,8 @@ namespace Axoom.MyService
         /// <summary>
         /// Starts running the worker. Use <see cref="Dispose"/> to stop it.
         /// </summary>
-        public async void Start()
-        { // NOTE: Using async void here only because all exceptions are caught and handled
+        public async void Start() // NOTE: Using async void here only because all exceptions are caught and handled
+        {
             try
             {
                 using (new CancellationGuard(_cts.Token))
@@ -33,8 +33,7 @@ namespace Axoom.MyService
                     }
                 }
             }
-            catch (OperationCanceledException)
-            {}
+            catch (OperationCanceledException) {}
             catch (Exception ex)
             {
                 using (var scope = _scopeFactory.CreateScope())

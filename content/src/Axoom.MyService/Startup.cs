@@ -11,10 +11,11 @@ namespace Axoom.MyService
     {
         public IConfigurationRoot Configuration { get; }
 
-        public Startup() => Configuration = new ConfigurationBuilder()
-            .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-            .AddEnvironmentVariables()
-            .Build();
+        public Startup()
+            => Configuration = new ConfigurationBuilder()
+                .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
+                .AddEnvironmentVariables()
+                .Build();
 
         /// <inheritdoc />
         public IServiceProvider ConfigureServices(IServiceCollection services) => services

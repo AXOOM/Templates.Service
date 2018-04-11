@@ -36,8 +36,8 @@ namespace Axoom.MyService.Infrastructure
                     .Handle<SocketException>()
                     .WaitAndRetry(
                         sleepDurations: _options.Value.StartupRetries,
-                        onRetry: (ex, timeSpan) =>
-                            _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
+                        onRetry: (ex, timeSpan)
+                            => _logger.LogWarning($"Problem connecting to external service; retrying in {timeSpan}.\n ({ex.GetType().Name}: {ex.Message})"))
                     .Execute(action);
             }
             catch (Exception ex)
