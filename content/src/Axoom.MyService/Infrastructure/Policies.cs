@@ -62,8 +62,8 @@ namespace Axoom.MyService.Infrastructure
 
     public static class PoliciesExtensions
     {
-        public static IServiceCollection AddPolicies(this IServiceCollection services, IConfiguration config) => services
-            .Configure<PolicyOptions>(config)
-            .AddSingleton<Policies>();
+        public static IServiceCollection AddPolicies(this IServiceCollection services, IConfiguration config)
+            => services.AddSingleton<Policies>()
+                       .Configure<PolicyOptions>(config);
     }
 }

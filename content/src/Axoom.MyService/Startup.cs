@@ -18,10 +18,10 @@ namespace Axoom.MyService
                 .Build();
 
         /// <inheritdoc />
-        public IServiceProvider ConfigureServices(IServiceCollection services) => services
-            .AddInfrastructure(Configuration)
-            .AddDummy()
-            .BuildServiceProvider();
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+            => services.AddInfrastructure(Configuration)
+                       .AddDummy()
+                       .BuildServiceProvider();
 
         /// <inheritdoc />
         public void Configure(IServiceProvider provider)

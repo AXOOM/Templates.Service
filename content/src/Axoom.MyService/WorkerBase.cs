@@ -15,7 +15,8 @@ namespace Axoom.MyService
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
-        protected WorkerBase(IServiceScopeFactory scopeFactory) => _scopeFactory = scopeFactory;
+        protected WorkerBase(IServiceScopeFactory scopeFactory)
+            => _scopeFactory = scopeFactory;
 
         /// <summary>
         /// Starts running the worker. Use <see cref="Dispose"/> to stop it.
