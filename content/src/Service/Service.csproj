@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Axoom.MyService</AssemblyName>
+    <RootNamespace>Axoom.MyService</RootNamespace>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
