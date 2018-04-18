@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using JetBrains.Annotations;
 using Nexogen.Libraries.Metrics;
 using Nexogen.Libraries.Metrics.Extensions;
@@ -17,13 +17,13 @@ namespace Axoom.MyService.Dummy
         public DummyMetrics(IMetrics metrics)
         {
             _runs = metrics.Counter()
-                .Name("myservice_dummy_runs")
-                .Help("Number of times the dummy worker ran")
-                .Register();
+                           .Name("myservice_dummy_runs")
+                           .Help("Number of times the dummy worker ran")
+                           .Register();
             _runDurations = metrics.Histogram()
-                .Name("myservice_dummy_duration_seconds")
-                .Help("Average duration of a dummy worker run")
-                .Register();
+                                   .Name("myservice_dummy_duration_seconds")
+                                   .Help("Average duration of a dummy worker run")
+                                   .Register();
         }
 
         /// <inheritdoc/>

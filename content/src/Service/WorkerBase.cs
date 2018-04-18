@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Axoom.MyService.Infrastructure;
@@ -16,7 +16,9 @@ namespace Axoom.MyService
         private readonly CancellationTokenSource _cts = new CancellationTokenSource();
 
         protected WorkerBase(IServiceScopeFactory scopeFactory)
-            => _scopeFactory = scopeFactory;
+        {
+            _scopeFactory = scopeFactory;
+        }
 
         /// <summary>
         /// Starts running the worker. Use <see cref="Dispose"/> to stop it.

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -28,7 +28,9 @@ namespace Axoom.MyService.Infrastructure
         /// </summary>
         /// <param name="cancellationToken">Used to signal cancellation requests.</param>
         public CancellationGuard(CancellationToken cancellationToken)
-            => _registration = cancellationToken.Register(_tcs.Task.Wait);
+        {
+            _registration = cancellationToken.Register(_tcs.Task.Wait);
+        }
 
         /// <summary>
         /// Registers a callback for the <paramref name="cancellationToken"/> that blocks calls to <see cref="CancellationTokenSource.Cancel()"/> until <see cref="Dispose"/> has been called.
@@ -36,7 +38,9 @@ namespace Axoom.MyService.Infrastructure
         /// <param name="cancellationToken">Used to signal cancellation requests.</param>
         /// <param name="timeout">A timespan after which the cancellation will be considered completed even if <see cref="Dispose"/> has not been called yet.</param>
         public CancellationGuard(CancellationToken cancellationToken, TimeSpan timeout)
-            => _registration = cancellationToken.Register(() => _tcs.Task.Wait(timeout));
+        {
+            _registration = cancellationToken.Register(() => _tcs.Task.Wait(timeout));
+        }
 
         /// <summary>
         /// Releases the block and allows <see cref="CancellationTokenSource.Cancel()"/> to complete.

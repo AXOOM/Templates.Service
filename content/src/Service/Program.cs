@@ -1,4 +1,4 @@
-﻿using Startup.Core;
+using Startup.Core;
 
 namespace Axoom.MyService
 {

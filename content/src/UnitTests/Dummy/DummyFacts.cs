@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
@@ -12,8 +12,7 @@ namespace Axoom.MyService.Dummy
         [Fact]
         public void NotesRunsInMetrics()
         {
-            var provider = new ServiceCollection()
-                .BuildServiceProvider();
+            var provider = new ServiceCollection().BuildServiceProvider();
             var worker = new DummyWorker(
                 provider.GetRequiredService<IServiceScopeFactory>(),
                 _metricsMock.Object,

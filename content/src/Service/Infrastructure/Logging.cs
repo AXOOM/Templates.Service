@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Axoom.Extensions.Logging.Console;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,8 +13,8 @@ namespace Axoom.MyService.Infrastructure
 
         public static void UseAxoomLogging(this IServiceProvider provider)
             => provider.GetRequiredService<ILoggerFactory>()
-                    .AddAxoomConsole(provider.GetRequiredService<IConfiguration>().GetSection("Logging"))
-                    .CreateLogger("Startup")
-                    .LogInformation("Starting My Service");
+                       .AddAxoomConsole(provider.GetRequiredService<IConfiguration>().GetSection("Logging"))
+                       .CreateLogger("Startup")
+                       .LogInformation("Starting My Service");
     }
 }

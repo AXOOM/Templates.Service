@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Axoom.MyService.Dummy;
 using Axoom.MyService.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -12,10 +12,12 @@ namespace Axoom.MyService
         public IConfigurationRoot Configuration { get; }
 
         public Startup()
-            => Configuration = new ConfigurationBuilder()
-                .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-                .AddEnvironmentVariables()
-                .Build();
+        {
+            Configuration = new ConfigurationBuilder()
+                           .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
+                           .AddEnvironmentVariables()
+                           .Build();
+        }
 
         /// <inheritdoc />
         public IServiceProvider ConfigureServices(IServiceCollection services)
