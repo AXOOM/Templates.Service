@@ -11,12 +11,12 @@ namespace Axoom.MyService.Infrastructure
                        .AddOptions()
                        .AddAxoomLogging(configuration)
                        .AddPolicies(configuration.GetSection("Policies"))
-                       .AddMetrics();
+                       .AddMetrics(configuration);
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {
             provider.UseAxoomLogging();
-            provider.ExposeMetrics(port: 5000);
+            provider.ExposeMetrics();
 
             return provider;
         }
