@@ -1,11 +1,11 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using Axoom.MyService.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyVendor.MyService.Infrastructure;
 
-namespace Axoom.MyService
+namespace MyVendor.MyService
 {
     /// <summary>
     /// Common base class for jobs that run in a continous loop.

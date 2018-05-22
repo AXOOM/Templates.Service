@@ -1,6 +1,6 @@
 using Startup.Core;
 
-namespace Axoom.MyService
+namespace MyVendor.MyService
 {
     public static class Program
     {

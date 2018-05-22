@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Axoom.MyService.Infrastructure
+namespace MyVendor.MyService.Infrastructure
 {
     /// <summary>
     /// Ensures that a block of code running on a background thread cleanly exits before a <see cref="CancellationTokenSource.Cancel()"/> call completes.

@@ -1,11 +1,11 @@
 using System;
-using Axoom.MyService.Dummy;
-using Axoom.MyService.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MyVendor.MyService.Dummy;
+using MyVendor.MyService.Infrastructure;
 using Startup.Core;
 
-namespace Axoom.MyService
+namespace MyVendor.MyService
 {
     public class Startup : IStartup
     {

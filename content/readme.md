@@ -22,7 +22,7 @@ To build and deploy locally with AX (requires [Infrastructure Stack](https://tfs
 
 ### Feed URI
 
-http://assets.axoom.cloud/services/myservice.xml
+http://assets.axoom.cloud/services/myvendor-myservice.xml
 
 ### External environment
 

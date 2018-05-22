@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace Axoom.MyService.Dummy
+namespace MyVendor.MyService.Dummy
 {
     public class DummyWorker : WorkerBase
     {

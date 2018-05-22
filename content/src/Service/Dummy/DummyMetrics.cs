@@ -3,7 +3,7 @@ using JetBrains.Annotations;
 using Nexogen.Libraries.Metrics;
 using Nexogen.Libraries.Metrics.Extensions;
 
-namespace Axoom.MyService.Dummy
+namespace MyVendor.MyService.Dummy
 {
     /// <summary>
     /// Used to report metrics relating to the dummy worker.

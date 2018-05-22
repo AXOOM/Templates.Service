@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Axoom.MyService.Dummy
+namespace MyVendor.MyService.Dummy
 {
     public static class Startup
     {

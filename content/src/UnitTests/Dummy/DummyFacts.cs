@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace Axoom.MyService.Dummy
+namespace MyVendor.MyService.Dummy
 {
     public class DummyFacts
     {
