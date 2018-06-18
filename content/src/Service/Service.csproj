@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>MyVendor.MyService</AssemblyName>
     <RootNamespace>MyVendor.MyService</RootNamespace>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsPackable>False</IsPackable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -34,7 +34,7 @@
 
   <ItemGroup>
     <Content Include="appsettings.yml">
-    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
