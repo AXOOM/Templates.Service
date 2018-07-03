@@ -1,4 +1,5 @@
 using System;
+using Axoom.Extensions.Prometheus.Standalone;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,13 +11,13 @@ namespace MyVendor.MyService.Infrastructure
             => services.AddSingleton(configuration)
                        .AddOptions()
                        .AddAxoomLogging(configuration)
-                       .AddPolicies(configuration.GetSection("Policies"))
-                       .AddMetrics(configuration);
+                       .AddPrometheusServer(configuration)
+                       .AddPolicies(configuration.GetSection("Policies"));
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {
             provider.UseAxoomLogging();
-            provider.ExposeMetrics();
+            provider.UsePrometheusServer();
 
             return provider;
         }
