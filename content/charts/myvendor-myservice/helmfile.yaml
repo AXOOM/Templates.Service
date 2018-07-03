@@ -12,6 +12,6 @@ releases:
 
         app:
           env:
-            LOGGING__FORMAT: 'Gelf'
+            LOGGING__FORMAT: 'Json'
             LOGGING__LOGLEVEL__DEFAULT: '{{ env "LOG_LEVEL" | default "Information" }}'
 
