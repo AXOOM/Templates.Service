@@ -12,7 +12,7 @@ namespace MyVendor.MyService.Infrastructure
                        .AddOptions()
                        .AddAxoomLogging(configuration)
                        .AddPrometheusServer(configuration)
-                       .AddPolicies(configuration.GetSection("Policies"));
+                       .AddPolicies(configuration);
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {
