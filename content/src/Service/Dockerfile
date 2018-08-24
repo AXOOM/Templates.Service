@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1.1-runtime
+FROM microsoft/dotnet:2.1.2-runtime
 ARG source
 WORKDIR /app
 EXPOSE 5000
