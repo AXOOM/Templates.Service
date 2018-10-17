@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Service": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "Logging__Format": "Plain",
+        "Logging__LogLevel__Default": "Debug"
+      }
+    }
+  }
+}

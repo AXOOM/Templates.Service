@@ -1,7 +1,6 @@
-Logging:
-  LogLevel:
-    Default: Debug
-  Format: Plain
+# Default configuration values
+# For local development overrides: see launchSettings.json or docker-compose.override.yml
+# For production overrides: see helmfile.yaml
 
 Policies:
   StartupRetries:
