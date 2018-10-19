@@ -13,14 +13,14 @@ namespace MyVendor.MyService.Infrastructure
             => services.AddSingleton(configuration)
                        .AddOptions()
                        .AddLogging(builder => builder.AddConfiguration(configuration.GetSection("Logging"))
+                                                     .AddAxoomConsole(configuration.GetSection("Logging"))
                                                      .AddExceptionDemystifyer())
-                       .AddPrometheusServer(configuration)
-                       .AddPolicies(configuration);
+                       .AddPrometheusServer(configuration.GetSection("Metrics"))
+                       .AddPolicies(configuration.GetSection("Policies"));
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {
             provider.GetRequiredService<ILoggerFactory>()
-                    .AddAxoomConsole(provider.GetRequiredService<IConfiguration>().GetSection("Logging"))
                     .CreateLogger("Startup")
                     .LogInformation("Starting My Service");
 
