@@ -20,10 +20,6 @@ namespace MyVendor.MyService.Infrastructure
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {
-            provider.GetRequiredService<ILoggerFactory>()
-                    .CreateLogger("Startup")
-                    .LogInformation("Starting My Service");
-
             provider.UsePrometheusServer();
 
             return provider;
