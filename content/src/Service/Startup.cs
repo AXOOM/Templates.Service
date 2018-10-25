@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyVendor.MyService.Dummy;
@@ -8,14 +7,11 @@ namespace MyVendor.MyService
 {
     public class Startup
     {
-        public IConfigurationRoot Configuration { get; }
+        public IConfiguration Configuration { get; }
 
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
-            Configuration = new ConfigurationBuilder()
-                           .AddYamlFile("appsettings.yml", optional: false, reloadOnChange: true)
-                           .AddEnvironmentVariables()
-                           .Build();
+            Configuration = configuration;
         }
 
         public void ConfigureServices(IServiceCollection services)

@@ -3,6 +3,7 @@
     "Service": {
       "commandName": "Project",
       "environmentVariables": {
+        "Environment": "Development",
         "Logging__Format": "Plain",
         "Logging__LogLevel__Default": "Debug"
       }
