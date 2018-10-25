@@ -21,10 +21,5 @@ namespace MyVendor.MyService
         public void ConfigureServices(IServiceCollection services)
             => services.AddInfrastructure(Configuration)
                        .AddDummy(Configuration.GetSection("Dummy"));
-
-        public void Configure(IServiceProvider provider)
-        {
-            provider.UseInfrastructure();
-        }
     }
 }

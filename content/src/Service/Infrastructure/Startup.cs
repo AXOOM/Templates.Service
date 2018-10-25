@@ -1,4 +1,3 @@
-using System;
 using Axoom.Extensions.Logging.Console;
 using Axoom.Extensions.Prometheus.Standalone;
 using Microsoft.Extensions.Configuration;
@@ -16,12 +15,5 @@ namespace MyVendor.MyService.Infrastructure
                                                      .AddAxoomConsole(configuration.GetSection("Logging"))
                                                      .AddExceptionDemystifyer())
                        .AddPrometheusServer(configuration.GetSection("Metrics"));
-
-        public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
-        {
-            provider.UsePrometheusServer();
-
-            return provider;
-        }
     }
 }

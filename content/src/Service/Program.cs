@@ -13,7 +13,6 @@ namespace MyVendor.MyService
             using (var host = builder.Build())
             {
                 host.Start();
-                startup.Configure(host.Services);
                 host.WaitForShutdown();
             }
         }
