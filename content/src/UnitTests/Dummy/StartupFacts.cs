@@ -1,4 +1,7 @@
+using System.Linq;
+using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Xunit;
 
 namespace MyVendor.MyService.Dummy
@@ -8,7 +11,7 @@ namespace MyVendor.MyService.Dummy
         [Fact]
         public void CanResolveDummyWorker()
         {
-            Provider.GetRequiredService<DummyWorker>();
+            Provider.GetServices<IHostedService>().OfType<DummyWorker>().Should().NotBeEmpty();
         }
     }
 }

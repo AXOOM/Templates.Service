@@ -1,3 +1,4 @@
+using System.Threading;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
@@ -18,7 +19,7 @@ namespace MyVendor.MyService.Dummy
                 _metricsMock.Object,
                 new Mock<ILogger<DummyWorker>>().Object);
 
-            worker.Start();
+            worker.StartAsync(CancellationToken.None);
             worker.Dispose();
 
             _metricsMock.Verify(x => x.Run());

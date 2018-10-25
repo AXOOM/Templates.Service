@@ -25,7 +25,6 @@ namespace MyVendor.MyService
         public void Configure(IServiceProvider provider)
         {
             provider.UseInfrastructure();
-            provider.GetRequiredService<DummyWorker>().Start();
         }
     }
 }
