@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace MyVendor.MyService.Dummy
 {
@@ -26,8 +27,9 @@ namespace MyVendor.MyService.Dummy
                 // TODO: To work
             }
 
-            _logger.LogDebug("Sleeping for 10s");
-            await Task.Delay(TimeSpan.FromSeconds(10), cancellationToken);
+            var sleep = provider.GetRequiredService<IOptions<DummyOptions>>().Value.Sleep;
+            _logger.LogDebug("Sleeping for {0}", sleep);
+            await Task.Delay(sleep, cancellationToken);
         }
     }
 }

@@ -2,3 +2,5 @@
 # For local development overrides: see launchSettings.json or docker-compose.override.yml
 # For production overrides: see helmfile.yaml
 
+Dummy:
+  Sleep: 00:00:10 # 10 seconds
