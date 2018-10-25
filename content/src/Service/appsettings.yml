@@ -2,7 +2,3 @@
 # For local development overrides: see launchSettings.json or docker-compose.override.yml
 # For production overrides: see helmfile.yaml
 
-Policies:
-  StartupRetries:
-    - 00:00:15
-    - 00:00:30

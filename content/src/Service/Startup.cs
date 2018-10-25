@@ -25,13 +25,6 @@ namespace MyVendor.MyService
         public void Configure(IServiceProvider provider)
         {
             provider.UseInfrastructure();
-            provider.GetRequiredService<Policies>().Startup(() =>
-            {
-                using (var scope = provider.CreateScope())
-                {
-                    // TODO: Connect to external services
-                }
-            });
             provider.GetRequiredService<DummyWorker>().Start();
         }
     }

@@ -15,8 +15,7 @@ namespace MyVendor.MyService.Infrastructure
                        .AddLogging(builder => builder.AddConfiguration(configuration.GetSection("Logging"))
                                                      .AddAxoomConsole(configuration.GetSection("Logging"))
                                                      .AddExceptionDemystifyer())
-                       .AddPrometheusServer(configuration.GetSection("Metrics"))
-                       .AddPolicies(configuration.GetSection("Policies"));
+                       .AddPrometheusServer(configuration.GetSection("Metrics"));
 
         public static IServiceProvider UseInfrastructure(this IServiceProvider provider)
         {

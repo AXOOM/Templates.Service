@@ -31,7 +31,6 @@
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="1.5.0" />
     <PackageReference Include="Nexogen.Libraries.Metrics.Extensions" Version="3.0.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
-    <PackageReference Include="Polly" Version="6.1.0" />
   </ItemGroup>
 
   <ItemGroup>
