@@ -12,4 +12,4 @@ releases:
 
         app:
           env:
-            LOGGING__LOGLEVEL__DEFAULT: '{{ env "LOG_LEVEL" | default "Information" }}'
+            ENVIRONMENT: '{{ env "ASPNETCORE_ENVIRONMENT" | default "Production" }}'
