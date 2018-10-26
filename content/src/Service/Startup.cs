@@ -1,10 +1,13 @@
+using Axoom.Extensions.Prometheus.Standalone;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MyVendor.MyService.Dummy;
-using MyVendor.MyService.Infrastructure;
 
 namespace MyVendor.MyService
 {
+    /// <summary>
+    /// Configures dependency injection.
+    /// </summary>
     public class Startup
     {
         public IConfiguration Configuration { get; }
@@ -15,7 +18,8 @@ namespace MyVendor.MyService
         }
 
         public void ConfigureServices(IServiceCollection services)
-            => services.AddInfrastructure(Configuration)
+            => services.AddOptions()
+                       .AddPrometheusServer(Configuration.GetSection("Metrics"))
                        .AddDummy(Configuration.GetSection("Dummy"));
     }
 }
