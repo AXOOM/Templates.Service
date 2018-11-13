@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -23,7 +24,7 @@ namespace MyVendor.MyService
         {
             _output = output;
 
-            _services.AddLogging();
+            _services.AddLogging(builder => builder.AddXUnit(output));
             new Startup(_configuration).ConfigureServices(_services);
 
             _provider = _services.BuildServiceProvider();

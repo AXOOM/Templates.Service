@@ -1,28 +1,24 @@
+using System;
 using System.Threading;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Moq;
+using Microsoft.Extensions.Options;
 using Xunit;
 
 namespace MyVendor.MyService.Dummy
 {
-    public class DummyFacts
+    public class DummyFacts : AutoMockingFactsBase<DummyWorker>
     {
-        private readonly Mock<IDummyMetrics> _metricsMock = new Mock<IDummyMetrics>();
+        public DummyFacts()
+        {
+            Use(Options.Create(new DummyOptions {Sleep = TimeSpan.FromSeconds(10)}));
+        }
 
         [Fact]
-        public void NotesRunsInMetrics()
+        public void UpdatesMetrics()
         {
-            var provider = new ServiceCollection().BuildServiceProvider();
-            var worker = new DummyWorker(
-                provider.GetRequiredService<IServiceScopeFactory>(),
-                _metricsMock.Object,
-                new Mock<ILogger<DummyWorker>>().Object);
+            Subject.StartAsync(CancellationToken.None);
+            Subject.Dispose();
 
-            worker.StartAsync(CancellationToken.None);
-            worker.Dispose();
-
-            _metricsMock.Verify(x => x.Run());
+            GetMock<IDummyMetrics>().Verify(x => x.Run());
         }
     }
 }
