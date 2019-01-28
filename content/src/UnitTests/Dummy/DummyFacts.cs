@@ -15,7 +15,7 @@ namespace MyVendor.MyService.Dummy
         [Fact]
         public void UpdatesMetrics()
         {
-            Subject.StartAsync(CancellationToken.None);
+            Subject.StartAsync(default);
             Subject.Dispose();
 
             GetMock<IDummyMetrics>().Verify(x => x.Run());
