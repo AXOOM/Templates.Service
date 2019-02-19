@@ -3,6 +3,7 @@
   <PropertyGroup>
     <AssemblyName>MyVendor.MyService</AssemblyName>
     <RootNamespace>MyVendor.MyService</RootNamespace>
+    <UserSecretsId>MyVendor.MyService</UserSecretsId>
     <LangVersion>latest</LangVersion>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <OutputType>Exe</OutputType>
@@ -24,6 +25,7 @@
     <PackageReference Include="Axoom.Extensions.Prometheus.Standalone" Version="2.0.3" />
     <PackageReference Include="codeessentials.Extensions.Logging.Demystifier" Version="1.0.54" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="2.2.0" />
