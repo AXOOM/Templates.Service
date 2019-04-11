@@ -1,7 +1,5 @@
 # My Service
 
-This repository contains the source code for My Service.
-
 my description
 
 ## Development
