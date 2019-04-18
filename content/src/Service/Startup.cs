@@ -18,7 +18,10 @@ namespace MyVendor.MyService
         }
 
         public void ConfigureServices(IServiceCollection services)
-            => services.AddPrometheusServer(Configuration.GetSection("Metrics"))
-                       .AddDummy(Configuration.GetSection("Dummy"));
+        {
+            services.AddPrometheusServer(Configuration.GetSection("Metrics"));
+
+            services.AddDummy(Configuration.GetSection("Dummy"));
+        }
     }
 }
