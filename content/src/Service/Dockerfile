@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2.4
+FROM mcr.microsoft.com/dotnet/core/runtime:2.2.5
 ARG source
 WORKDIR /app
 EXPOSE 5000
