@@ -24,6 +24,7 @@
     <PackageReference Include="Axoom.Extensions.Logging.Console" Version="1.1.0" />
     <PackageReference Include="Axoom.Extensions.Prometheus.Standalone" Version="2.0.3" />
     <PackageReference Include="codeessentials.Extensions.Logging.Demystifier" Version="1.0.54" />
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
@@ -32,7 +33,6 @@
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.2.0" />
     <PackageReference Include="NetEscapades.Configuration.Yaml" Version="1.6.0" />
     <PackageReference Include="Nexogen.Libraries.Metrics.Extensions" Version="3.0.1" />
-    <PackageReference Include="JetBrains.Annotations" Version="2019.1.1" />
   </ItemGroup>
 
   <ItemGroup>
