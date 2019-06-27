@@ -41,7 +41,7 @@ docker:
       --context dir://$CI_PROJECT_DIR/src/Service
       --destination eu.gcr.io/axoom-image/myteam/myvendor-myservice:$GitVersion_NuGetVersion
 
-.deploy: &deploy
+.deploy:
   when: manual
   image: axoom/gcloud-helmfile
   environment:
@@ -49,8 +49,8 @@ docker:
   script:
     - /entrypoint.sh
 
-deploy:dev: &deploy_dev
-  <<: *deploy
+deploy:dev:
+  extends: .deploy
   stage: deploy:dev
   except: [master]
   variables:
@@ -61,13 +61,13 @@ deploy:dev: &deploy_dev
     ENVIRONMENT: Development
 
 deploy:dev:auto:
-  <<: *deploy_dev
+  extends: deploy:dev
   except: []
   only: [master]
   when: on_success
 
 deploy:test:
-  <<: *deploy
+  extends: .deploy
   stage: deploy:test
   variables:
     # gcloud
@@ -77,7 +77,7 @@ deploy:test:
     ENVIRONMENT: Production
 
 deploy:live:
-  <<: *deploy
+  extends: .deploy
   stage: deploy:live
   variables:
     # gcloud
