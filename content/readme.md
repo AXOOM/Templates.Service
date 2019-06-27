@@ -18,8 +18,8 @@ You can then access the metrics at: http://localhost:5000/
 
 To build and then run locally with Docker Compose:
 ```powershell
-cd src
 ./build.ps1
+cd src
 docker-compose up --build
 ```
 
