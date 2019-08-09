@@ -1,3 +1,4 @@
+using System;
 using Axoom.Extensions.Prometheus.Standalone;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,5 +22,9 @@ namespace MyVendor.MyService
 
             services.AddDummy(_configuration.GetSection("Dummy"));
         }
+
+        // Tasks that need to run on startup
+        public static void Init(IServiceProvider provider)
+        {}
     }
 }

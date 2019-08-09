@@ -25,6 +25,7 @@
     <PackageReference Include="Axoom.Extensions.Prometheus.Standalone" Version="2.1.0" />
     <PackageReference Include="codeessentials.Extensions.Logging.Demystifier" Version="1.0.58" />
     <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.2.0" />
