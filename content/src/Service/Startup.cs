@@ -5,23 +5,21 @@ using MyVendor.MyService.Dummy;
 
 namespace MyVendor.MyService
 {
-    /// <summary>
-    /// Configures dependency injection.
-    /// </summary>
     public class Startup
     {
-        public IConfiguration Configuration { get; }
+        private readonly IConfiguration _configuration;
 
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
+        // Register services for DI
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPrometheusServer(Configuration.GetSection("Metrics"));
+            services.AddPrometheusServer(_configuration.GetSection("Metrics"));
 
-            services.AddDummy(Configuration.GetSection("Dummy"));
+            services.AddDummy(_configuration.GetSection("Dummy"));
         }
     }
 }
