@@ -4,8 +4,10 @@ app:
 
   image:
     registry: eu.gcr.io
-    authenticated: false
     repository: axoom-image/myteam/myvendor-myservice
+
+  # Avoid running more than once instance
+  rollingUpdate: false
 
   resources:
     requests:
