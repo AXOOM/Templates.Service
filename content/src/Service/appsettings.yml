@@ -6,5 +6,9 @@
 #   Kubernetes:  values.yaml + helmfile.yaml
 #   Local IDE:   launchSettings.json
 
+Logging:
+  LogLevel:
+    Default: Information
+
 Dummy:
   Sleep: 00:00:10 # 10 seconds
