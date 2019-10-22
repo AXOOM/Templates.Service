@@ -26,8 +26,8 @@ namespace MyVendor.MyService
                 {
                     while (!stoppingToken.IsCancellationRequested)
                     {
-                        using (var scope = _scopeFactory.CreateScope())
-                            await DoWorkAsync(scope.ServiceProvider, stoppingToken);
+                        using var scope = _scopeFactory.CreateScope();
+                        await DoWorkAsync(scope.ServiceProvider, stoppingToken);
                     }
                 }
             }

@@ -1,8 +1,6 @@
-using System;
 using Axoom.Extensions.Logging.Console;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -13,9 +11,7 @@ namespace MyVendor.MyService
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-            RunInitTasks(host);
-            host.Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         [PublicAPI]
@@ -41,22 +37,5 @@ namespace MyVendor.MyService
                           .AddExceptionDemystifyer();
                })
               .ConfigureServices((context, services) => new Startup(context.Configuration).ConfigureServices(services));
-
-        private static void RunInitTasks(IHost host)
-        {
-            using (var scope = host.Services.CreateScope())
-            {
-                var provider = scope.ServiceProvider;
-                try
-                {
-                    Startup.Init(provider);
-                }
-                catch (Exception ex)
-                {
-                    provider.GetRequiredService<ILogger<Startup>>().LogCritical(ex, "Startup.Init() failed.");
-                    throw;
-                }
-            }
-        }
     }
 }
