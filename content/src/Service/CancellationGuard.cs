@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MyVendor.MyService.Infrastructure
+namespace MyVendor.MyService
 {
     /// <summary>
     /// Ensures that a block of code running on a background thread cleanly exits before a <see cref="CancellationTokenSource.Cancel()"/> call completes.
@@ -19,7 +19,7 @@ namespace MyVendor.MyService.Infrastructure
     /// </example>
     public class CancellationGuard : IDisposable
     {
-        private CancellationTokenRegistration _registration;
+        private readonly CancellationTokenRegistration _registration;
 
         private readonly TaskCompletionSource<bool> _tcs = new TaskCompletionSource<bool>();
 
